@@ -1,4 +1,32 @@
-console.log(playRound("rOcK", computerPlay()));
+game();
+
+function game() {
+    let wins = 0;
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = getPlayerSelection();
+        let computerSelection = computerPlay();
+        let result = playRound(playerSelection, computerSelection);
+
+        switch(result.charAt(4)) {
+            case 'w':
+                wins++;
+                break;
+            case 'l':
+                wins--;
+                break;
+        }
+        
+        console.log(result);
+    }
+
+    if (wins > 0) {
+        console.log("Congrats! You won!");
+    } else if (wins < 0) {
+        console.log("Welp, you lost.");
+    } else {
+        console.log("You tied.");
+    }
+}
 
 function computerPlay() {
     let rand = Math.floor(Math.random() * 3);
@@ -55,6 +83,16 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return `You tied! You both chose ${playerSelection}.`
     }
+}
+
+function getPlayerSelection() {
+    let input = prompt("Choose: Rock, Paper, or Scissors").toLowerCase();
+
+    while (input !== "rock" && input !== "paper" && input !== "scissors") {
+        input = prompt("Please enter a valid selection.").toLowerCase();
+    }
+
+    return input;
 }
 
 function capitalize(word) {
