@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    padding: 6px 8px;
+    background-color: gray;
+}
+
+.title {
+    text-align: center;
+}
